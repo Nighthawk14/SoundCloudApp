@@ -1,0 +1,20 @@
+<div class="sound">
+  <a class="sound__coverArt" ng-href="#/track/{{value.permalink}}">
+    <div class="image__hasPlaceholder">
+      <img ng-src="{{value.artwork_url ? value.artwork_url : value.user.avatar_url}}">
+    </div>
+  </a>
+  <div class="sound__header">
+    <div class="soundTitle">
+      <div class="soundTitle__playButton">
+        <button class="sc-button sc-button-play sc-button-large" ng-click="play(value)" title="Play">Play
+        </button>
+      </div>
+      <div class="soundInfo">
+        <a class="soundTitle__username sc-link-light" ng-href="#/user/{{value.user.permalink}}">{{value.user.username}}</a>
+        <div class="clear"></div>
+        <a class="soundTitle__title" ng-href="#/track/{{value.permalink}}">{{value.title}}</a>
+      </div>
+    </div>
+  </div>
+</div>

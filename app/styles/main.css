@@ -1,0 +1,126 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.clear {
+  clear: both;
+}
+/* Custom page header */
+.header {
+  background: url("https://a-v2.sndcdn.com/assets/images/header/header-bg-38b02b00.png") repeat-x scroll 0 0 transparent;
+  border-top: 1px solid #2a2a2a;
+  font: 100 14px/1.5 "Interstate", "Lucida Grande", Arial, sans-serif;
+  height: 48px;
+  width: 100%;
+  z-index: 1000;
+  color: #999;
+}
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+.header .header__logo {
+  margin-left: 15px;
+  margin-top: -1px;
+  border-left: 1px solid #000;
+  background: linear-gradient(#ff7700, #ff3300) repeat scroll 0% 0% transparent;
+  box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.08);
+}
+.header .header__logolink {
+  background: url('https://a-v2.sndcdn.com/assets/images/header/logo-98c690f3.png');
+  display: block;
+  height: 46px;
+  width: 84px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(173, 73, 0, 0.7) rgba(255, 255, 255, 0.15) #ad4900;
+  border: 0px none;
+  font: 0px/0 a;
+  color: #CCC;
+  text-shadow: 0px 1px 0px #000;
+}
+.header .btn-connect {
+  cursor: pointer;
+  float: right;
+  margin-right: 10px;
+  margin-top: 7px;
+}
+.viewContainer {
+  top: 46px;
+  position: relative;
+  height: 404px;
+  overflow: auto;
+}
+.l-container.l-fullwidth {
+  width: 100% !important;
+}
+.stream ul {
+  list-style: none outside none;
+  margin: 0px;
+  padding: 10px 10px;
+}
+.stream .soundList__item {
+  clear: both;
+  padding: 10px 0px 0px;
+  margin: 0px 0px 25px;
+  position: relative;
+  min-height: 120px;
+}
+.stream .soundList__item:first-child {
+  padding-top: 0px;
+}
+.stream .soundList__item .sound {
+  position: relative;
+  padding-left: 136px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 100%;
+  box-sizing: border-box;
+}
+.stream .soundList__item .sound .soundTitle__playButton,
+.stream .soundList__item .sound .soundInfo {
+  display: table-cell;
+}
+.stream .soundList__item .sound .soundTitle__username {
+  position: relative;
+  vertical-align: top;
+  margin-left: 10px;
+}
+.stream .sound__header {
+  min-height: 43px;
+  padding-top: 7px;
+  position: relative;
+  z-index: 2;
+}
+.stream .sound__header .soundTitle {
+  display: table;
+}
+.stream .sound__coverArt {
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 2;
+  width: 120px;
+  height: 120px;
+  left: -12px;
+  top: -10px;
+  padding: 10px 10px 12px 12px;
+  display: inline-block;
+}
+.stream .sound__coverArt .image__hasPlaceholder {
+  background-color: #F2F2F2;
+  background-image: url('https://a-v2.sndcdn.com/assets/images/default/cloudx200-38b02b00.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+}
+.stream .sound__coverArt .image__hasPlaceholder img {
+  width: 100%;
+  height: 100%;
+}

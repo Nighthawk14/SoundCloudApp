@@ -1,0 +1,9 @@
+<section class="stream">
+  <ul>
+    <li ng-repeat="(key, obj) in stream.collection" class="soundList__item">
+      <div class="activity">
+        <div sound ng-init="value = (obj.track) ? obj.track : obj.playlist"></div>
+      </div>
+    </li>
+  </ul>
+</section>
