@@ -11,7 +11,6 @@ describe('Service: SoundCloud', function () {
   beforeEach(inject(function (_Soundcloud_, _$rootScope_) {
     SoundCloud = _Soundcloud_;
     rootScope = _$rootScope_;
-
   }));
 
 });

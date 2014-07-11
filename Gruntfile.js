@@ -18,7 +18,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    build: './webkitbuilds'
   };
 
   // Define the configuration for all the tasks
@@ -88,7 +89,7 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
-          port: 9001,
+          port: 9002,
           middleware: function (connect) {
             return [
               connect.static('.tmp'),
@@ -326,6 +327,12 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      nw:{
+        expand: true,
+        cwd: '<%= yeoman.build %>',
+        dest: '<%= yeoman.build %>/releases/soundCloudApp/mac/SoundCloudApp.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/',
+        src: '{,*/}*.so'
       }
     },
 
@@ -350,7 +357,19 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
+    },
+
+    nodewebkit: {
+      options: {
+        //version:'0.10.0-rc1',
+        build_dir: '<%= yeoman.build %>', // Where the build version of my node-webkit app is saved
+        mac: true, // We want to build it for mac
+        win: false, // We want to build it for win
+        linux32: false, // We don't need linux32
+        linux64: false // We don't need linux64
+      },
+      src: ['./package.json','./app/scripts/main.js'] // Your node-webkit app
+    },
   });
 
 
@@ -380,6 +399,11 @@ module.exports = function (grunt) {
     'autoprefixer',
     'connect:test',
     'karma'
+  ]);
+
+  grunt.registerTask('nw', [
+    'nodewebkit',
+    'copy:nw'
   ]);
 
   grunt.registerTask('build', [

@@ -19,16 +19,26 @@ angular
       .state('home', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        url: '/'
+        url: '/',
+        data: {
+          state:'Stream'
+        }
       })
-      .state('oauth',{
-        url:'/oauth',
-        templateUrl:'views/oauth.html'
+      .state('user',{
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl',
+        url: '/user/:id',
+        data: {
+          state:'Profile'
+        }
       })
-      .state('about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        url:'/about'
+      .state('track',{
+        templateUrl: 'views/track.html',
+        controller: 'TrackCtrl',
+        url: '/track/:id',
+        data: {
+          state:'Now Playing'
+        }
       });
     $urlRouterProvider.otherwise('/');
   });

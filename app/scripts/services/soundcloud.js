@@ -41,6 +41,13 @@ angular.module('soundCloudApp')
         });
         return deferred.promise;
       },
+      play: function(path){
+        var deferred = $q.defer();
+        SC.stream(path, function(sound){
+          deferred.resolve(sound);
+        });
+        return deferred.promise;
+      }
     });
 
     return this;

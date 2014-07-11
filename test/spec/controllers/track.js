@@ -1,18 +1,19 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: TrackCtrl', function () {
 
   // load the controller's module
   beforeEach(module('soundCloudApp'));
 
-  var MainCtrl,
+  var TrackCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    TrackCtrl = $controller('TrackCtrl', {
       $scope: scope
     });
   }));
+
 });

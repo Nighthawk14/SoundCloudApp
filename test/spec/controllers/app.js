@@ -8,7 +8,7 @@ describe('Controller: AppCtrl', function () {
   var AppCtrl,
     rootScope,
     q,
-    soundCloud,
+    Soundcloud,
     scope;
 
   // Initialize the controller and a mock scope
@@ -16,7 +16,7 @@ describe('Controller: AppCtrl', function () {
     scope = $rootScope.$new();
     q = $q;
     rootScope = $rootScope;
-    soundCloud = _Soundcloud_;
+    Soundcloud = _Soundcloud_;
 
 
     AppCtrl = $controller('AppCtrl', {
@@ -24,7 +24,7 @@ describe('Controller: AppCtrl', function () {
     });
   }));
 
-  it('should connect to Sound Cloud account', function(){
+  it('should be connecting to Sound Cloud account', function(){
     scope.connect();
     expect(scope.connecting).toBe(true);
   });

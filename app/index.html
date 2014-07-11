@@ -2,12 +2,13 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Sound Cloud Desktop Application</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -16,7 +17,7 @@
     <!-- endbuild -->
     <link rel="stylesheet" type="text/css" href="https://a-v2.sndcdn.com/assets/soundcloud-vDQF-ae1b527f.css">
   </head>
-  <body ng-app="soundCloudAppApp" ng-controller="AppCtrl">
+  <body ng-app="soundCloudApp" ng-controller="AppCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -25,42 +26,28 @@
     <div class="container">
       <header role="banner" class="header sc-selection-disabled fixed g-dark g-z-index-header show">
         <div class="header__inner l-container l-fullwidth">
+          <div class="menuBtn" ng-class="(menuActive) ? 'active' : ''" ng-click="menuActive = !menuActive">
+            <i class="fa fa-bars"></i>
+          </div>
           <div class="header__left left" style="float: left;">
             <h1 class="header__logo left">
               <a class="header__logolink sc-border-box sc-ir" title="Home" href="/#/">SoundCloud</a>
             </h1>
-            <!-- <nav role="navigation" class="left header__navWrapper">
-              <ul class="header__navMenu header__mainMenu left">
-                <li>
-                  <a href="/stream" class="header__mainMenu-stream selected">Stream</a>
-                  <span class="header__notificationBadge header__streamBadge">
-                    <span class="newItemBadge"></span>
-                  </span>
-                </li>
-                <li class="header__explore-wrapper">
-                  <a href="/explore" class="header__mainMenu-explore">Explore</a>
-                </li>
-              </ul>
-            </nav> -->
-            <!-- <div role="search" class="headerSearch left">
-              <form class="quicksearch sc-border-box">
-                <input type="search" aria-label="Search" autocomplete="off" name="q" placeholder="Search" class="quicksearch__input sc-input g-all-transitions-300" aria-autocomplete="list" aria-owns="searchMenuList">
-                <button type="submit" class="quicksearch__submit submit">Search</button>
-              </form>
-            </div> -->
+            <h2 class="currentState ng-cloak">{{currentState}}</h2>
           </div>
           <div class="header__right right">
             <img class="btn-connect" ng-if="!user" ng-click="connect()" src="http://connect.soundcloud.com/2/btn-connect-l.png">
             <img class="btn-connect" ng-cloak ng-if="user" ng-click="disconnect()" src="http://connect.soundcloud.com/2/btn-disconnect-l.png">
           </div>
-          <!-- <div class="header__right right">  <ul class="header__userMenu left"> <li> <a title="Latest notifications" href="" class="header__activitiesButton" aria-haspopup="true" role="button" aria-owns="dropdown-button-47"> <span class="header__userMenuActivities header__userMenuIcon">Activities</span> <b class="header__userMenuShadow"></b> </a> <span class="header__notificationBadge header__activitiesBadge"> <span class="newItemBadge"></span> </span> </li> <li> <a title="Latest messages" href="" class="header__messagesButton" aria-haspopup="true" role="button" aria-owns="dropdown-button-45"> <span class="header__userMenuMessages header__userMenuIcon">Messages</span> <b class="header__userMenuShadow"></b> </a> <span class="header__notificationBadge header__activitiesBadge"> <span class="newItemBadge newItems__some"></span> </span> </li> <li> <a title="Antoine Savignac" href="" class="header__profileButton" aria-haspopup="true" role="button" aria-owns="dropdown-button-49"> <span class="header__userMenuProfile header__userMenuIcon"> <img width="17" height="17" src="https://i1.sndcdn.com/avatars-000051667321-tk5ksc-t20x20.jpg?30a2558" class="userMenuProfile__image" alt="Your profile"> </span> <b class="header__userMenuShadow"></b> </a> </li>  <li> <div class="header__soundInput left header__soundInput-left"> <a class="uploadButton sc-button" href="/upload-beta"><span class="uploadButton__title">Upload</span><span class="uploadButton__status"></span></a> </div> </li> </ul>  <div class="header__farRight header__container"> <ul class="header__navMenu header__iconMenu sc-clearfix">  <li class="header__playbackControl header__playbackControls"> <button class="skipControl sc-ir skipControl__previous disabled" tabindex="-1">Skip to previous</button> <button class="playControl sc-ir" tabindex="">Play current</button> <button class="skipControl sc-ir skipControl__next" tabindex="">Skip to next</button> </li> <li class="header__playbackControl header__playbackTitle header__bordered"> <div class="playbackTitle"></div> </li>  <li class="header__volume sc-selection-disabled"> <div class="header__bordered"> <div class="volume" data-level="3"><div class="volume__wrapper"> <button class="volume__button volume__togglemute sc-ir"> Toggle mute </button> <div role="slider" tabindex="0" class="volume__slider g-slider" aria-valuemin="0" aria-valuemax="1" aria-label="Volume" aria-valuenow="0.3"><div class="progress"></div><span class="volume__handle g-slider-handle" style="left: 11.4px;"></span></div><input type="hidden" data-orig-type="range" value="0.3" step="0.1" max="1" min="0" class="volume__range"> <span class="volume__button volume__indicator sc-ir"></span>
-</div>
-</div> </div> </li>   <li><a class="header__moreButton" href="" aria-haspopup="true" role="button" aria-owns="dropdown-button-43"><img alt="Settings and more" src="https://a-v2.sndcdn.com/assets/images/header/profile/settings_light-38b02b00.png"></a></li> </ul> </div> </div>
-</div>-->
-</header>
-      <div ui-view="" class="viewContainer"></div>
-
-    </div>
+      </header>
+      <menu class="menu" ng-class="(menuActive) ? 'active' : ''"></menu>
+      <div ui-view="" class="viewContainer" ng-class="(menuActive) ? 'active' : ''"></div>
+      <footer>
+        <div class="wrapper">
+          <i class="fa fa-search" onclick="toggleSearch()"></i>
+          <input type="text" class="search" placeholder="Rechercher...">
+        </div>
+      </footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -96,6 +83,10 @@
         <script src="scripts/services/soundcloud.js"></script>
         <script src="scripts/controllers/app.js"></script>
         <script src="scripts/directives/app.js"></script>
+        <script src="scripts/services/nw.js"></script>
+        <script src="scripts/services/user.js"></script>
+        <script src="scripts/controllers/user.js"></script>
+        <script src="scripts/controllers/track.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -7,13 +7,13 @@
   <div class="sound__header">
     <div class="soundTitle">
       <div class="soundTitle__playButton">
-        <button class="sc-button sc-button-play sc-button-large" ng-click="play(value)" title="Play">Play
+        <button class="sc-button sc-button-large" ng-class="(playing) ? ($parent.user.currentSound.track.id == value.id) ? 'sc-button-pause' : 'sc-button-play' : 'sc-button-play' " ng-click="play(value)" title="Play">Play
         </button>
       </div>
       <div class="soundInfo">
-        <a class="soundTitle__username sc-link-light" ng-href="#/user/{{value.user.permalink}}">{{value.user.username}}</a>
+        <a class="soundTitle__username sc-link-light" ng-href="#/user/{{value.user.id}}">{{value.user.username}}</a>
         <div class="clear"></div>
-        <a class="soundTitle__title" ng-href="#/track/{{value.permalink}}">{{value.title}}</a>
+        <a class="soundTitle__title" ng-href="#/track/{{value.id}}">{{value.title}}</a>
       </div>
     </div>
   </div>

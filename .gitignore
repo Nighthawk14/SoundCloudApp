@@ -7,6 +7,8 @@ bower_components
 # Logs
 logs
 *.log
+*.nw
+webkitbuilds/*
 
 # Runtime data
 pids

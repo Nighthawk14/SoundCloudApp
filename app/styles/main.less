@@ -2,16 +2,21 @@
 html,body{
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
+  background-color: #F8F8F8 !important;
 }
 
 .clear{
   clear:both;
 }
 
+@menuWidth:200px;
+@orange:#FF5324;
+
 /* Custom page header */
 .header {
   background: url("https://a-v2.sndcdn.com/assets/images/header/header-bg-38b02b00.png") repeat-x scroll 0 0 transparent;
-  border-top: 1px solid #2a2a2a;
+  //border-top: 1px solid #2a2a2a;
   font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
   height: 48px;
   width: 100%;
@@ -25,9 +30,8 @@ html,body{
   }
 
   .header__logo{
-    margin-left: 15px;
     margin-top: -1px;
-    border-left: 1px solid #000;
+    //border-left: 1px solid #000;
     background: linear-gradient(#F70, #F30) repeat scroll 0% 0% transparent;
     box-shadow: -1px 0px 0px rgba(255, 255, 255, 0.08);
   }
@@ -46,11 +50,37 @@ html,body{
     text-shadow: 0px 1px 0px #000;
   }
 
+  .menuBtn{
+    display: inline-block;
+    height: 46px;
+    width: 40px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+    vertical-align: middle;
+    i{
+      padding-top: 13px;
+      font-size: 20px;
+    }
+    &:active{
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
   .btn-connect{
     cursor: pointer;
     float: right;
     margin-right: 10px;
     margin-top: 7px;
+  }
+  .currentState{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+    position: relative;
+    top: 13px;
   }
 }
 
@@ -59,6 +89,37 @@ html,body{
   position: relative;
   height: 404px;
   overflow: auto;
+  transition: all .3s ease-out;
+  &.active{
+    left:@menuWidth;
+  }
+}
+footer{
+  border-top: 1px solid #d5d5d5;
+  background-color: #FFF;
+  width: 100%;
+  height: 45px;
+  z-index: 4;
+  position: fixed;
+  .wrapper{
+    padding:0px 10px;
+    height: 100%;
+  }
+  input.search{
+    padding: 10px;
+    width: 150px;
+    height: 100%;
+    border: none;
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+  }
+  .fa-search{
+    float: left;
+    margin-top: 12px;
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
 }
 
 .l-container.l-fullwidth {
@@ -90,13 +151,16 @@ html,body{
       height: 100%;
       box-sizing: border-box;
       .soundTitle__playButton,.soundInfo{
+        vertical-align:top;
         display:table-cell;
       }
-      .soundTitle__username{
-        position:relative;
-        vertical-align:top;
-        margin-left:10px;
+      .soundInfo{
+        padding-left:10px;
       }
+      .soundTitle__username, .soundTitle__title{
+        vertical-align:top;
+      }
+
     }
   }
 
@@ -135,6 +199,83 @@ html,body{
         width: 100%;
         height: 100%;
       }
+    }
+  }
+}
+
+.menu{
+  position: absolute;
+  left: -(@menuWidth + 10);
+  width: @menuWidth;
+  background-color: #FFF;
+  height: 100%;
+  z-index: 3;
+  transition: all .3s ease-out;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.4);
+  border-right: 1px solid #D5D5D5;
+  &.active{
+    left: 0px;
+  }
+  
+  .menuContainer{
+    padding-top: 45px;
+    ul{
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+      li{
+        border-bottom: 1px solid #EEE;
+        padding: 10px;
+        cursor: pointer;
+        color: #2F2F2F;
+        .label{
+          padding-left: 30px;
+          display: inline-block;
+        }
+        i{
+          font-size: 16px;
+          position: absolute;
+        }
+
+        &:hover{
+          color: @orange;
+        }
+        &.active{
+          i{
+            color: @orange;
+          }
+        }
+        &.explore{
+          .label{margin-top: 2px;}
+          .fa{
+            font-size: 19px;
+          }
+        }
+      }
+    }
+  }
+  .wrapper{
+    padding: 0px 10px;
+  }
+  .cover{
+    width: 100%;
+    height: 120px;
+    background-position: 0% 50%;
+
+    .username{
+      margin-bottom: 2px;
+      margin-top: 65px;
+    }
+
+    .fa-users{
+      margin-right: 5px;
+    }
+
+    .caption{
+      color: #FFF;
+      background: rgba(0,0,0,.6);
+      display: inline-block;
+      padding: 3px;
     }
   }
 }
